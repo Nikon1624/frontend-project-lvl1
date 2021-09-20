@@ -1,8 +1,8 @@
 import readlineSync from 'readline-sync';
 
-const question = (question) => {
-  const name = readlineSync.question(question);
+const question = (str) => {
+  const name = readlineSync.question(str);
   console.log(`Hello, ${name}!`);
-}
+};
 
 export default question;
