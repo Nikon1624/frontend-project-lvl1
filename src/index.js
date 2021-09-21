@@ -12,7 +12,7 @@ const messages = {
   userAnswer: (userAnswer) => `Your answer: ${userAnswer}`,
   greeting: (userName) => `Hello, ${userName}`,
   question: (question) => `Question: ${question}\n`,
-  congratulations: (userName) => `Congratulations, ${userName}`,
+  congratulations: (userName) => `Congratulations, ${userName}!`,
 };
 
 const startGame = (gameData) => () => {
