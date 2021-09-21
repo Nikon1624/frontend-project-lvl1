@@ -8,3 +8,5 @@
 [![asciicast](https://asciinema.org/a/QmZLkxa3QVHrRsU7SgJPOQnLT.svg)](https://asciinema.org/a/QmZLkxa3QVHrRsU7SgJPOQnLT)
 ### Greatest common divisor:
 [![asciicast](https://asciinema.org/a/lOZM9AqsM2EBKk3yYjqvrggjS.svg)](https://asciinema.org/a/lOZM9AqsM2EBKk3yYjqvrggjS)
+### Progression:
+[![asciicast](https://asciinema.org/a/O45xF0Ewp3DpcKEyp83RbeXsT.svg)](https://asciinema.org/a/O45xF0Ewp3DpcKEyp83RbeXsT)
