@@ -6,3 +6,5 @@
 [![asciicast](https://asciinema.org/a/uaRaKFCUBbooJwNLyRY8E5hbI.svg)](https://asciinema.org/a/uaRaKFCUBbooJwNLyRY8E5hbI)
 ### Calc:
 [![asciicast](https://asciinema.org/a/QmZLkxa3QVHrRsU7SgJPOQnLT.svg)](https://asciinema.org/a/QmZLkxa3QVHrRsU7SgJPOQnLT)
+### Greatest common divisor:
+[![asciicast](https://asciinema.org/a/lOZM9AqsM2EBKk3yYjqvrggjS.svg)](https://asciinema.org/a/lOZM9AqsM2EBKk3yYjqvrggjS)
