@@ -1,3 +1,3 @@
-import startGame from '../src/game.js';
+import startGame from '../src/games/even.js';
 
 startGame();
