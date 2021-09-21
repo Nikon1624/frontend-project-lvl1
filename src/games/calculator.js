@@ -2,15 +2,15 @@ import startGame from '../index.js';
 import getRandomNum from '../utils.js';
 
 const maxNum = 100;
+const operators = ['+', '-', '*'];
 
 const gameData = {
   condition: 'What is the result of the expression?',
-  operators: ['+', '-', '*'],
   getQuestion() {
-    return `${getRandomNum(maxNum)} ${this.operators[getRandomNum(this.operators.length - 1)]} ${getRandomNum(maxNum)}`;
+    return `${getRandomNum(maxNum)} ${operators[getRandomNum(operators.length - 1)]} ${getRandomNum(maxNum)}`;
   },
   getCorrectAnswer(question) {
-    const [plus, minus, multiply] = this.operators;
+    const [plus, minus, multiply] = operators;
     const [firstNum, operator, secondNum] = question.split(' ')
       .map((item) => (Number.isNaN(parseInt(item, 10)) ? item : parseInt(item, 10)));
 
