@@ -28,11 +28,12 @@ const gameData = {
         }
 
         return initialValue;
-      });
+      })
+      .join(' ');
   },
   getCorrectAnswer(question) {
-    const index = question.findIndex((item) => item === '..');
-    return (question[index - 1] + this.step).toString();
+    const index = question.split(' ').findIndex((item) => item === '..');
+    return (question.split(' ').map((item) => Number(item))[index - 1] + this.step).toString();
   },
 };
 
