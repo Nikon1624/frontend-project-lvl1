@@ -6,39 +6,37 @@ const messages = {
   welcome: 'Welcome to the Brain Games!',
   nameQuestion: 'May I have your name?\n',
   correctAnswer: 'Correct!',
-  wrongAnswer: (userAnswer, correctAnswer, userName) => (
+  getWrongAnswerMessage: (userAnswer, correctAnswer, userName) => (
     `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${userName}!`
   ),
-  userAnswer: (userAnswer) => `Your answer: ${userAnswer}`,
-  greeting: (userName) => `Hello, ${userName}`,
-  question: (question) => `Question: ${question}\n`,
-  congratulations: (userName) => `Congratulations, ${userName}!`,
+  showUserAnswer: (userAnswer) => `Your answer: ${userAnswer}`,
+  greetUser: (userName) => `Hello, ${userName}`,
+  showQuestion: (question) => `Question: ${question}\n`,
+  congratulateTheUser: (userName) => `Congratulations, ${userName}!`,
 };
 
 const startGame = (gameData) => () => {
-  let currentRound = 1;
   console.log(messages.welcome);
   const name = readlineSync.question(messages.nameQuestion);
-  console.log(messages.greeting(name));
+  console.log(messages.greetUser(name));
   console.log(gameData.condition);
 
-  while (currentRound <= roundsCount) {
+  for (let i = 1; i <= roundsCount; i += 1) {
     const question = gameData.getQuestion();
     const correctAnswer = gameData.getCorrectAnswer(question);
-    const answer = readlineSync.question(messages.question(question));
+    const answer = readlineSync.question(messages.showQuestion(question));
 
-    console.log(messages.userAnswer(answer));
+    console.log(messages.showUserAnswer(answer));
 
-    if (answer === correctAnswer) {
-      currentRound += 1;
-      console.log(messages.correctAnswer);
-    } else {
-      console.log(messages.wrongAnswer(answer, correctAnswer, name));
+    if (answer !== correctAnswer) {
+      console.log(messages.getWrongAnswerMessage(answer, correctAnswer, name));
       return;
     }
+
+    console.log(messages.correctAnswer);
   }
 
-  console.log(messages.congratulations(name));
+  console.log(messages.congratulateTheUser(name));
 };
 
 export default startGame;
