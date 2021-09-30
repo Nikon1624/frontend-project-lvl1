@@ -1,46 +1,42 @@
 import startGame from '../index.js';
 import getRandomNum from '../utils.js';
 
+const condition = 'What number is missing in the progression?';
 const progressionLength = 10;
+const minStepValue = 2;
+const minStartValue = 1;
 const maxStepValue = 9;
 const maxStartValue = 50;
-let start = null;
-let step = null;
-let randomIndex = null;
 
-const gameData = {
-  condition: 'What number is missing in the progression?',
-  getQuestion() {
-    start = getRandomNum(maxStartValue);
-    step = getRandomNum(maxStepValue);
-    randomIndex = getRandomNum(progressionLength);
-    let initialValue = start;
-    return new Array(progressionLength).fill(0)
-      .map((item, index) => {
-        if (index === 0) {
-          return start;
-        }
-
-        initialValue += step;
-
-        if (index === randomIndex) {
-          return '..';
-        }
-
-        return initialValue;
-      }).join(' ');
-  },
-  getCorrectAnswer(question) {
-    const questionArr = question.split(' ');
-    const index = questionArr.findIndex((item) => item === '..');
-    const questionNums = questionArr.map((item) => {
-      if (item === '..') {
-        return item;
+const createProgression = (start, step, itemCount, emptyItemIndex) => {
+  let currentValue = start;
+  return new Array(itemCount).fill(0)
+    .map((item, index) => {
+      if (index === 0) {
+        return start;
       }
 
-      return Number(item);
+      currentValue += step;
+
+      if (index === emptyItemIndex) {
+        return '..';
+      }
+
+      return currentValue;
     });
-    return (questionNums[index - 1] + step).toString();
+};
+
+const gameData = {
+  condition,
+  getTask() {
+    const start = getRandomNum(minStartValue, maxStartValue);
+    const step = getRandomNum(minStepValue, maxStepValue);
+    const emptyItemIndex = getRandomNum(1, progressionLength - 1);
+    const progressionArr = createProgression(start, step, progressionLength, emptyItemIndex);
+    const question = progressionArr.join(' ');
+    const answer = (progressionArr[emptyItemIndex - 1] + step).toString();
+
+    return { question, answer };
   },
 };
 

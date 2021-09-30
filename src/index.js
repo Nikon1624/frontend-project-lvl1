@@ -22,14 +22,13 @@ const startGame = (gameData) => () => {
   console.log(gameData.condition);
 
   for (let i = 1; i <= roundsCount; i += 1) {
-    const question = gameData.getQuestion();
-    const correctAnswer = gameData.getCorrectAnswer(question);
-    const answer = readlineSync.question(messages.showQuestion(question));
+    const { question, answer } = gameData.getTask();
+    const userAnswer = readlineSync.question(messages.showQuestion(question));
 
     console.log(messages.showUserAnswer(answer));
 
-    if (answer !== correctAnswer) {
-      console.log(messages.getWrongAnswerMessage(answer, correctAnswer, name));
+    if (answer !== userAnswer) {
+      console.log(messages.getWrongAnswerMessage(userAnswer, answer, name));
       return;
     }
 

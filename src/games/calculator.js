@@ -1,29 +1,34 @@
 import startGame from '../index.js';
 import getRandomNum from '../utils.js';
 
+const condition = 'What is the result of the expression?';
+const minNum = 1;
 const maxNum = 100;
 const operators = ['+', '-', '*'];
 
-const gameData = {
-  condition: 'What is the result of the expression?',
-  getQuestion() {
-    return `${getRandomNum(maxNum)} ${operators[getRandomNum(operators.length - 1)]} ${getRandomNum(maxNum)}`;
-  },
-  getCorrectAnswer(question) {
-    const [plus, minus, multiply] = operators;
-    const [firstNum, operator, secondNum] = question.split(' ')
-      .map((item) => (Number.isNaN(parseInt(item, 10)) ? item : parseInt(item, 10)));
+const calculate = (operator, firstNum, secondNum) => {
+  switch (operator) {
+    case '+':
+      return firstNum + secondNum;
+    case '-':
+      return firstNum - secondNum;
+    case '*':
+      return firstNum * secondNum;
+    default:
+      throw new Error(`Unknown operator ${operator}`);
+  }
+};
 
-    switch (operator) {
-      case plus:
-        return (firstNum + secondNum).toString();
-      case minus:
-        return (firstNum - secondNum).toString();
-      case multiply:
-        return (firstNum * secondNum).toString();
-      default:
-        return false;
-    }
+const gameData = {
+  condition,
+  getTask() {
+    const firstNum = getRandomNum(minNum, maxNum);
+    const secondNum = getRandomNum(minNum, maxNum);
+    const operator = operators[getRandomNum(minNum, operators.length - 1)];
+    const question = `${firstNum} ${operator} ${secondNum}`;
+    const answer = (calculate(operator, firstNum, secondNum)).toString();
+
+    return { question, answer };
   },
 };
 

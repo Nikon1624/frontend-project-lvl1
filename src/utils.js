@@ -1,6 +1,6 @@
-const getRandomNum = (maxNum) => {
-  const random = Math.round(Math.random() * maxNum);
-  return random !== 0 ? random : getRandomNum(maxNum);
+const getRandomNum = (min, max) => {
+  const random = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(random);
 };
 
 export default getRandomNum;
